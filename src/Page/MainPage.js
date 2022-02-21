@@ -3,10 +3,11 @@ import GameBoard from "../Components/GameBoard";
 import Header from "../Components/Header";
 import Keyboard from "../Components/Keyboard";
 
-export default function MainPage() {
+export default function MainPage(props) {
+  const { setInfo } = props;
   return (
     <div>
-      <Header />
+      <Header setInfo={setInfo} />
       <GameBoard />
       <Keyboard />
     </div>

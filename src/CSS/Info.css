@@ -1,0 +1,12 @@
+#Info_container {
+  width: 50%;
+  height: 100vh;
+  margin: auto;
+  background-color: rgb(18, 18, 19);
+  color: #ffffff;
+  padding: 1rem;
+}
+#Info_header {
+  display: flex;
+  justify-content: space-between;
+}
