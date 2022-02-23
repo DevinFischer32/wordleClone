@@ -1,16 +1,21 @@
 import React from "react";
-import "../CSS/Info.css";
+import { useDispatch } from "react-redux";
+import "../../CSS/Info.css";
 
-export default function Info(props) {
-  const { setInfo } = props;
+export default function Info() {
+  const dispatch = useDispatch();
+
+  function helpDisplayFalse(e) {
+    dispatch({ type: "changeHelpDisplay", payload: false });
+  }
   return (
-    <div id="Info_container">
-      <div id="Info_header">
+    <div className="container">
+      <div className="header">
         <div></div>
         <h1>HOW TO PLAY</h1>
         <div
           onClick={(e) => {
-            setInfo(false);
+            helpDisplayFalse();
           }}
         >
           <svg

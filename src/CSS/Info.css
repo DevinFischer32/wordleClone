@@ -1,4 +1,4 @@
-#Info_container {
+.container {
   width: 50%;
   height: 100vh;
   margin: auto;
@@ -6,7 +6,7 @@
   color: #ffffff;
   padding: 1rem;
 }
-#Info_header {
+.header {
   display: flex;
   justify-content: space-between;
 }

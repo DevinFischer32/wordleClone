@@ -1,15 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
+import { useSelector } from "react-redux";
 import "./CSS/Reset.css";
 import "./CSS/App.css";
 import MainPage from "./Page/MainPage";
-import Info from "./Components/Info";
+import Info from "./Components/SecondaryComponets/Info";
+import Setting from "./Components/SecondaryComponets/Setting";
 
 function App() {
-  const [info, setInfo] = useState(false);
+  const settingDisplay = useSelector((state) => state.settingDisplay);
+  const helpDisplay = useSelector((state) => state.helpDisplay);
 
   return (
     <div className="App">
-      {info ? <Info setInfo={setInfo} /> : <MainPage setInfo={setInfo} />}
+      {helpDisplay === true ? (
+        <Info />
+      ) : settingDisplay === true ? (
+        <Setting />
+      ) : (
+        <MainPage />
+      )}
     </div>
   );
 }

@@ -19,3 +19,6 @@
 .font_xl {
   font-size: 32px;
 }
+.flex {
+  display: flex;
+}
