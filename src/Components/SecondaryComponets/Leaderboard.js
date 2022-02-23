@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { StyledLeaderboard } from "../Styles/Leaderboard.styled";
+
 // Redux Stuff
 
 export default function Leaderboard() {
@@ -14,9 +14,9 @@ export default function Leaderboard() {
     dispatch({ type: "changeLeaderboardDisplay", payload: false });
   }
   return (
-    <StyledLeaderboard>
-      <div>
-        <div></div>
+    <div className="leaderboard">
+      <div className="header">
+        <div className="icons spacing"></div>
         <h1>STATISTICS</h1>
         <div
           onClick={(e) => {
@@ -37,27 +37,27 @@ export default function Leaderboard() {
           </svg>
         </div>
       </div>
-      <div>
-        <div>
-          <h1>{gamesPlayed}</h1>
-          <h1>Played</h1>
+      <div className="win-container spacing">
+        <div className="column">
+          <h1 className="font_m">{gamesPlayed}</h1>
+          <h1 className="font_s">Played</h1>
         </div>
-        <div>
-          <h1>{winPercent}</h1>
-          <h1>Win %</h1>
+        <div className="column">
+          <h1 className="font_m">{winPercent}</h1>
+          <h1 className="font_s">Win %</h1>
         </div>
-        <div>
-          <h1>{currentStreak}</h1>
-          <h1>Current</h1>
-          <h1>Streak</h1>
+        <div className="column">
+          <h1 className="font_m">{currentStreak}</h1>
+          <h1 className="font_s">Current</h1>
+          <h1 className="font_s">Streak</h1>
         </div>
-        <div>
-          <h1>{maxStreak}</h1>
-          <h1>Max</h1>
-          <h1>Streak</h1>
+        <div className="column">
+          <h1 className="font_m">{maxStreak}</h1>
+          <h1 className="font_s">Max</h1>
+          <h1 className="font_s">Streak</h1>
         </div>
       </div>
-      <div>graph</div>
-    </StyledLeaderboard>
+      <div className="spacing">GUESS DISTRIBUTION</div>
+    </div>
   );
 }

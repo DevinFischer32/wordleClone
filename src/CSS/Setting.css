@@ -1,0 +1,27 @@
+.content {
+  color: #fff;
+}
+.switchContainer {
+  display: flex;
+  justify-content: space-between;
+}
+.switch {
+  height: 20px;
+  width: 32px;
+  background: hsl(240, 2%, 23%);
+  border-radius: 999px;
+  display: block;
+  position: relative;
+}
+.knob {
+  display: block;
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  height: calc(100% - 4px);
+  width: 50%;
+  border-radius: 8px;
+  background: #fff;
+  transform: translateX(0);
+  transition: transform 0.3s;
+}

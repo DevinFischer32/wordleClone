@@ -1,12 +1,12 @@
 #gameboard-container {
+  margin: 1.5em 0;
   display: grid;
   justify-content: center;
   align-content: center;
   flex-grow: 1;
-  grid-template-columns: repeat(5, 4em);
-  grid-template-rows: repeat(6, 4em);
+  grid-template-columns: repeat(5, 3.5em);
+  grid-template-rows: repeat(6, 3.5em);
   gap: 0.25em;
-  margin-bottom: 1em;
 }
 .tile {
   font-size: 2em;

@@ -2,17 +2,20 @@ body {
   background-color: hsl(240, 3%, 7%);
   display: flex;
   flex-direction: column;
-  margin: 0;
-  padding: 1em;
   font-size: clamp(0.5rem, 2.5vmin, 1.5rem);
+  font-family: "ZCOOL QingKe HuangYou", cursive;
 }
-
+* {
+  font-family: "ZCOOL QingKe HuangYou", cursive;
+}
 #header_container {
   background-color: hsl(240, 3%, 7%);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.5em;
+  margin: 0.5em 0;
+  padding: 0em 0.65em 0.5em 0.65em;
+  border-bottom: 0.05em solid hsl(240, 2%, 23%);
 }
 #leaderboard_icon {
   margin-right: 10px;
@@ -20,6 +23,8 @@ body {
 #Title {
   color: #ffffff;
   font-size: 1.75em;
+  font-weight: bold;
+  letter-spacing: 0.01em;
 }
 .icons {
   width: 1.5em;
