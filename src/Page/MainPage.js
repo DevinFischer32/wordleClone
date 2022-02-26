@@ -6,7 +6,8 @@ import Keyboard from "../Components/Keyboard";
 import Leaderboard from "../Components/SecondaryComponets/Leaderboard";
 import "../CSS/Statistics.css";
 
-export default function MainPage() {
+export default function MainPage(props) {
+  const { message, boardData, handleKeyPress, row, rowIndex } = props;
   const leaderBoardDisplay = useSelector((state) => state.leaderBoardDisplay);
 
   return (
@@ -17,14 +18,24 @@ export default function MainPage() {
           <div className="overlay">
             <Leaderboard />
           </div>
-          <GameBoard />
-          <Keyboard />
+          <GameBoard
+            row={row}
+            rowIndex={rowIndex}
+            message={message}
+            boardData={boardData}
+          />
+          <Keyboard handleKeyPress={handleKeyPress} boardData={boardData} />
         </>
       ) : (
         <>
           <Header />
-          <GameBoard />
-          <Keyboard />
+          <GameBoard
+            message={message}
+            boardData={boardData}
+            row={row}
+            rowIndex={rowIndex}
+          />
+          <Keyboard handleKeyPress={handleKeyPress} boardData={boardData} />
         </>
       )}
     </div>

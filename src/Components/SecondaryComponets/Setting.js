@@ -2,7 +2,8 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import "../../CSS/Setting.css";
 
-export default function Setting() {
+export default function Setting(props) {
+  const { resetBoard } = props;
   const dispatch = useDispatch();
 
   function settingDisplayFalse(e) {
@@ -36,6 +37,8 @@ export default function Setting() {
             <span className="knob"></span>
           </div>
         </div>
+
+        <div onClick={() => resetBoard()}>Reset Game {"\u27f3"}</div>
       </div>
     </div>
   );
