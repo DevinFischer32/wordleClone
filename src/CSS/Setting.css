@@ -8,6 +8,10 @@
 .reset {
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
+}
+#reset-icon {
+  font-size: 1.5em;
 }
 
 .switch {

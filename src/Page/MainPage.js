@@ -7,7 +7,7 @@ import Leaderboard from "../Components/SecondaryComponets/Leaderboard";
 import "../CSS/Statistics.css";
 
 export default function MainPage(props) {
-  const { message, boardData, handleKeyPress, row, rowIndex } = props;
+  const { message, boardData, handleKeyPress, row, rowIndex, statData } = props;
   const leaderBoardDisplay = useSelector((state) => state.leaderBoardDisplay);
 
   return (
@@ -16,7 +16,7 @@ export default function MainPage(props) {
         <>
           <Header />
           <div className="overlay">
-            <Leaderboard />
+            <Leaderboard statData={statData} />
           </div>
           <GameBoard
             row={row}

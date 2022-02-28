@@ -9,13 +9,17 @@ function App() {
   const [boardData, setBoardData] = useState(
     JSON.parse(localStorage.getItem("board-data"))
   );
+  const [statData, setStatData] = useState(
+    JSON.parse(localStorage.getItem("stat-data"))
+  );
   const [message, setMessage] = useState(null);
   const [error, setError] = useState(false);
   const [charArray, setCharArray] = useState([]);
   const settingDisplay = useSelector((state) => state.settingDisplay);
   const helpDisplay = useSelector((state) => state.helpDisplay);
 
-  const resetBoard = () => {
+  // resets and gets new word
+  const resetBoard = (props) => {
     let alphabetIndex = Math.floor(Math.random() * 26);
     let wordIndex = Math.floor(
       Math.random() * wordList[String.fromCharCode(97 + alphabetIndex)].length
@@ -33,8 +37,23 @@ function App() {
     };
     setBoardData(newBoardData);
     localStorage.setItem("board-data", JSON.stringify(newBoardData));
+    if (props === "giveUp") {
+      let gamesPlayed = statData.gamesPlayed;
+      let gamesWon = statData.gamesWon;
+      let maxStreak = statData.maxStreak;
+      let newStatData = {
+        ...statData,
+        gamesPlayed: gamesPlayed + 1,
+        gamesWon: gamesWon,
+        currentStreak: 0,
+        maxStreak: maxStreak,
+      };
+      setStatData(newStatData);
+      localStorage.setItem("stat-data", JSON.stringify(newStatData));
+    }
   };
 
+  // Runs once on load sets board data
   useEffect(() => {
     if (!boardData || !boardData.solution) {
       let alphabetIndex = Math.floor(Math.random() * 26);
@@ -54,13 +73,23 @@ function App() {
       };
       setBoardData(newBoardData);
       localStorage.setItem("board-data", JSON.stringify(newBoardData));
+      let newStatData = {
+        ...statData,
+        gamesPlayed: 0,
+        gamesWon: 0,
+        currentStreak: 0,
+        maxStreak: 0,
+      };
+      setStatData(newStatData);
+      localStorage.setItem("stat-data", JSON.stringify(newStatData));
     }
-  }, [boardData]);
+  }, [boardData, statData]);
 
   const handleMessage = (message) => {
     setMessage(message);
     setTimeout(() => {
       setMessage(null);
+      resetBoard();
     }, 3000);
   };
   const handleError = () => {
@@ -70,6 +99,7 @@ function App() {
     }, 3000);
   };
 
+  // Main checking function
   const enterBoardWord = (word) => {
     let boardWords = boardData.boardWords;
     let boardRowStatus = boardData.boardRowStatus;
@@ -81,6 +111,10 @@ function App() {
     let status = boardData.status;
     let rowStatus = [];
     let matchCount = 0;
+    let gamesPlayed = statData.gamesPlayed;
+    let gamesWon = statData.gamesWon;
+    let currentStreak = statData.currentStreak;
+    let maxStreak = statData.maxStreak;
 
     for (let i = 0; i < word.length; i++) {
       if (solution.charAt(i) === word.charAt(i)) {
@@ -106,9 +140,40 @@ function App() {
 
     if (matchCount === 5) {
       status = "WIN";
-      handleMessage("You Won");
+      if (currentStreak >= maxStreak) {
+        handleMessage("You Won");
+        let newStatData = {
+          ...statData,
+          gamesPlayed: gamesPlayed + 1,
+          gamesWon: gamesWon + 1,
+          currentStreak: currentStreak + 1,
+          maxStreak: currentStreak + 1,
+        };
+        setStatData(newStatData);
+        localStorage.setItem("stat-data", JSON.stringify(newStatData));
+      } else {
+        let newStatData = {
+          ...statData,
+          gamesPlayed: gamesPlayed + 1,
+          gamesWon: gamesWon + 1,
+          currentStreak: currentStreak + 1,
+          maxStreak: maxStreak,
+        };
+        setStatData(newStatData);
+        localStorage.setItem("stat-data", JSON.stringify(newStatData));
+        handleMessage("You Won");
+      }
     } else if (rowIndex + 1 === 6) {
       status = "LOST";
+      let newStatData = {
+        ...statData,
+        gamesPlayed: gamesPlayed + 1,
+        gamesWon: gamesWon,
+        currentStreak: 0,
+        maxStreak: maxStreak,
+      };
+      setStatData(newStatData);
+      localStorage.setItem("stat-data", JSON.stringify(newStatData));
       handleMessage(boardData.solution);
     }
     boardRowStatus.push(rowStatus);
@@ -170,6 +235,7 @@ function App() {
         <Setting resetBoard={resetBoard} />
       ) : (
         <MainPage
+          statData={statData}
           error={error}
           message={message}
           boardData={boardData}

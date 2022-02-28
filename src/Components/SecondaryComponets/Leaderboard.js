@@ -1,18 +1,22 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 // Redux Stuff
 
-export default function Leaderboard() {
-  const gamesPlayed = useSelector((state) => state.gamesPlayed);
-  const winPercent = useSelector((state) => state.winPercent);
-  const currentStreak = useSelector((state) => state.currentStreak);
-  const maxStreak = useSelector((state) => state.maxStreak);
-
+export default function Leaderboard(props) {
+  const { statData } = props;
   const dispatch = useDispatch();
   function leaderboardDisplayFalse(e) {
     dispatch({ type: "changeLeaderboardDisplay", payload: false });
   }
+
+  const gamesPlayed = statData.gamesPlayed;
+  const gamesWon = statData.gamesWon;
+  const currentStreak = statData.currentStreak;
+  const maxStreak = statData.maxStreak;
+  const winPercent = Math.floor((gamesWon / gamesPlayed) * 100);
+
+  console.log(winPercent);
   return (
     <div className="leaderboard">
       <div className="header">
@@ -43,7 +47,11 @@ export default function Leaderboard() {
           <h1 className="font_s">Played</h1>
         </div>
         <div className="column">
-          <h1 className="font_m">{winPercent}</h1>
+          {isNaN(winPercent) ? (
+            <h1 className="font_m">0</h1>
+          ) : (
+            <h1 className="font_m">{winPercent}</h1>
+          )}
           <h1 className="font_s">Win %</h1>
         </div>
         <div className="column">

@@ -36,14 +36,14 @@ export default function Setting(props) {
       <div
         className="content reset"
         onClick={(e) => {
-          resetBoard();
+          resetBoard("giveUp");
           setTimeout(() => {
             settingDisplayFalse();
           }, 500);
         }}
       >
         <h1>Reset Game</h1>
-        <h1>{"\u27f3"}</h1>
+        <h1 id="reset-icon">{"\u27f3"}</h1>
       </div>
 
       <div className="content reset">
