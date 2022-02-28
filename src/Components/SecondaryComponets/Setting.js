@@ -13,8 +13,8 @@ export default function Setting(props) {
   return (
     <div className="container">
       <div className="header">
-        <div></div>
-        <h1>SETTING</h1>
+        <div className="icons"></div>
+        <h1 className="settingTitle">SETTING</h1>
         <div
           onClick={(e) => {
             settingDisplayFalse();
@@ -38,7 +38,17 @@ export default function Setting(props) {
           </div>
         </div>
 
-        <div onClick={() => resetBoard()}>Reset Game {"\u27f3"}</div>
+        <div
+          className=""
+          onClick={(e) => {
+            resetBoard();
+            setTimeout(() => {
+              settingDisplayFalse();
+            }, 500);
+          }}
+        >
+          Reset Game {"\u27f3"}
+        </div>
       </div>
     </div>
   );

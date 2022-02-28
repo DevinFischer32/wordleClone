@@ -107,15 +107,9 @@ function App() {
     if (matchCount === 5) {
       status = "WIN";
       handleMessage("You Won");
-      setTimeout(() => {
-        resetBoard();
-      }, 4500);
     } else if (rowIndex + 1 === 6) {
       status = "LOST";
       handleMessage(boardData.solution);
-      setTimeout(() => {
-        resetBoard();
-      }, 4500);
     }
     boardRowStatus.push(rowStatus);
     boardWords[rowIndex] = word;
