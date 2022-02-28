@@ -12,7 +12,7 @@ export default function Info() {
     <div className="container">
       <div className="header">
         <div className="icons"></div>
-        <h1 id="settingTitle" style={{ fontWeight: "bold" }}>
+        <h1 className="settingTitle" style={{ fontWeight: "bold" }}>
           HOW TO PLAY
         </h1>
         <div

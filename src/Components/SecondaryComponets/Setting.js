@@ -14,7 +14,10 @@ export default function Setting(props) {
     <div className="container">
       <div className="header">
         <div className="icons"></div>
-        <h1 className="settingTitle">SETTING</h1>
+        <h1 className="settingTitle" style={{ fontWeight: "bold" }}>
+          SETTING
+        </h1>
+
         <div
           onClick={(e) => {
             settingDisplayFalse();
@@ -30,25 +33,32 @@ export default function Setting(props) {
         </div>
       </div>
 
-      <div className="content">
-        <h1>Dark Theme</h1>
-        <div className="switchContainer">
-          <div className="switch">
-            <span className="knob"></span>
-          </div>
-        </div>
+      <div
+        className="content reset"
+        onClick={(e) => {
+          resetBoard();
+          setTimeout(() => {
+            settingDisplayFalse();
+          }, 500);
+        }}
+      >
+        <h1>Reset Game</h1>
+        <h1>{"\u27f3"}</h1>
+      </div>
 
-        <div
-          className=""
-          onClick={(e) => {
-            resetBoard();
-            setTimeout(() => {
-              settingDisplayFalse();
-            }, 500);
-          }}
-        >
-          Reset Game {"\u27f3"}
-        </div>
+      <div className="content reset">
+        <h1>Light Theme</h1>
+        <label className="switch">
+          <input type="checkbox" />
+          <span className="slider round"></span>
+        </label>
+      </div>
+      <div className="content reset">
+        <h1>High Contrast Mode</h1>
+        <label className="switch">
+          <input type="checkbox" />
+          <span className="slider round"></span>
+        </label>
       </div>
     </div>
   );
