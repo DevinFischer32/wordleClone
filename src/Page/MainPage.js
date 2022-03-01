@@ -4,7 +4,7 @@ import GameBoard from "../Components/GameBoard";
 import Header from "../Components/Header";
 import Keyboard from "../Components/Keyboard";
 import Leaderboard from "../Components/SecondaryComponets/Leaderboard";
-import "../CSS/Statistics.css";
+import "../CSS/Leaderboard.css";
 
 export default function MainPage(props) {
   const { message, boardData, handleKeyPress, row, rowIndex, statData } = props;

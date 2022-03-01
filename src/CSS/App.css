@@ -35,3 +35,58 @@ body {
 .flex {
   display: flex;
 }
+@media screen and (max-width: 480px) {
+  #header_container {
+    padding: 0em 0.7em 0.95em 0.7em;
+    margin: 0.7em 0;
+    border-bottom: 0.25em solid hsl(240, 2%, 23%);
+  }
+  .icons {
+    width: 2.25em;
+    height: 2.25em;
+  }
+  #Title {
+    font-size: 2.5em;
+    letter-spacing: 0.1em;
+  }
+  .gameboard-container {
+    margin-top: 3em;
+  }
+  .letters {
+    height: 3.5rem;
+    width: 3.5rem;
+    font-size: 4em;
+  }
+  .tile,
+  .tile-rows {
+    gap: 0.5em;
+  }
+  #keyboard-container {
+    gap: 0.5em;
+    margin-top: 6em;
+    grid-auto-rows: 3.5em;
+  }
+  .keys {
+    font-size: 1.5em;
+    width: 2.25em;
+    height: 2.25em;
+  }
+  .keys_xl {
+    column-span: 3;
+    width: 3.5em;
+  }
+  .container {
+    width: 90%;
+    font-size: 1.75em;
+  }
+  .leaderboard {
+    width: 80%;
+    font-size: 2em;
+  }
+  #leaderboard-title {
+    font-size: 1.5em;
+  }
+  .header {
+    margin-bottom: 2em;
+  }
+}

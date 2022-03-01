@@ -1,8 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 
-// Redux Stuff
-
 export default function Leaderboard(props) {
   const { statData } = props;
   const dispatch = useDispatch();
@@ -16,12 +14,11 @@ export default function Leaderboard(props) {
   const maxStreak = statData.maxStreak;
   const winPercent = Math.floor((gamesWon / gamesPlayed) * 100);
 
-  console.log(winPercent);
   return (
     <div className="leaderboard">
       <div className="header">
-        <div className="icons spacing"></div>
-        <h1>STATISTICS</h1>
+        <div className="icons"></div>
+        <h1 id="leaderboard-title">STATISTICS</h1>
         <div
           onClick={(e) => {
             leaderboardDisplayFalse();
@@ -41,7 +38,7 @@ export default function Leaderboard(props) {
           </svg>
         </div>
       </div>
-      <div className="win-container spacing">
+      <div className="win-container">
         <div className="column">
           <h1 className="font_m">{gamesPlayed}</h1>
           <h1 className="font_s">Played</h1>
@@ -65,7 +62,6 @@ export default function Leaderboard(props) {
           <h1 className="font_s">Streak</h1>
         </div>
       </div>
-      <div className="spacing">GUESS DISTRIBUTION</div>
     </div>
   );
 }
