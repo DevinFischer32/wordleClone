@@ -95,10 +95,16 @@ function App() {
 
   const handleMessage = (message) => {
     setMessage(message);
-    setTimeout(() => {
-      setMessage(null);
-      resetBoard();
-    }, 3000);
+    if (message === "Not In Word List" || message === "Not enough letters") {
+      setTimeout(() => {
+        setMessage(null);
+      }, 3000);
+    } else {
+      setTimeout(() => {
+        setMessage(null);
+        resetBoard();
+      }, 3000);
+    }
   };
   const handleError = () => {
     setError(true);
@@ -119,12 +125,6 @@ function App() {
     let status = boardData.status;
     let rowStatus = [];
     let matchCount = 0;
-    let rowOne = statData.rows[0];
-    let rowTwo = statData.rows[1];
-    let rowThree = statData.rows[2];
-    let rowFour = statData.rows[3];
-    let rowFive = statData.rows[4];
-    let rowSix = statData.rows[5];
 
     for (let i = 0; i < word.length; i++) {
       if (solution.charAt(i) === word.charAt(i)) {
@@ -158,7 +158,6 @@ function App() {
           gamesWon: statData.gamesWon + 1,
           currentStreak: statData.currentStreak + 1,
           maxStreak: statData.currentStreak + 1,
-          rows: [rowOne, rowTwo, rowThree, rowFour, rowFive, rowSix],
         };
         setStatData(newStatData);
         localStorage.setItem("stat-data", JSON.stringify(newStatData));
@@ -169,7 +168,6 @@ function App() {
           gamesWon: statData.gamesWon + 1,
           currentStreak: statData.currentStreak + 1,
           maxStreak: statData.maxStreak,
-          rows: [rowOne, rowTwo, rowThree, rowFour, rowFive, rowSix],
         };
         setStatData(newStatData);
         localStorage.setItem("stat-data", JSON.stringify(newStatData));

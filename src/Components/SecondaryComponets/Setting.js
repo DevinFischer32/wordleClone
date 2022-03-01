@@ -46,7 +46,7 @@ export default function Setting(props) {
         <h1 id="reset-icon">{"\u27f3"}</h1>
       </div>
 
-      <div className="content reset">
+      {/* <div className="content reset">
         <h1>Light Theme</h1>
         <label className="switch">
           <input type="checkbox" />
@@ -59,7 +59,7 @@ export default function Setting(props) {
           <input type="checkbox" />
           <span className="slider round"></span>
         </label>
-      </div>
+      </div> */}
     </div>
   );
 }
