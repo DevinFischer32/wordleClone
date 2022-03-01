@@ -63,7 +63,7 @@ body {
   }
   #keyboard-container {
     gap: 0.5em;
-    margin-top: 6em;
+    margin-top: 2em;
     grid-auto-rows: 3.5em;
   }
   .keys {
