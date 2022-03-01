@@ -41,19 +41,13 @@ function App() {
       let gamesPlayed = statData.gamesPlayed;
       let gamesWon = statData.gamesWon;
       let maxStreak = statData.maxStreak;
-      let rowOne = statData.rows[0];
-      let rowTwo = statData.rows[1];
-      let rowThree = statData.rows[2];
-      let rowFour = statData.rows[3];
-      let rowFive = statData.rows[4];
-      let rowSix = statData.rows[5];
+
       let newStatData = {
         ...statData,
         gamesPlayed: gamesPlayed + 1,
         gamesWon: gamesWon,
         currentStreak: 0,
         maxStreak: maxStreak,
-        rows: [rowOne, rowTwo, rowThree, rowFour, rowFive, rowSix],
       };
       setStatData(newStatData);
       localStorage.setItem("stat-data", JSON.stringify(newStatData));
@@ -86,7 +80,6 @@ function App() {
         gamesWon: 0,
         currentStreak: 0,
         maxStreak: 0,
-        rows: [0, 0, 0, 0, 0, 0],
       };
       setStatData(newStatData);
       localStorage.setItem("stat-data", JSON.stringify(newStatData));
